@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ghost Writer AI - Animações com GSAP
 
-## Getting Started
+Este projeto implementa uma landing page para o Ghost Writer AI com animações avançadas utilizando GSAP (GreenSock Animation Platform).
 
-First, run the development server:
+## Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js 15.5.2
+- GSAP (GreenSock Animation Platform)
+- TailwindCSS
+- TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Animações Implementadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Métodos GSAP Utilizados
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **gsap.fromTo()** - Utilizado no componente `AnimatedComponent.tsx` para animar elementos de um estado inicial para um estado final com diferentes tipos de animações:
 
-## Learn More
+   - Animações de entrada de cima para baixo
+   - Animações de entrada de baixo para cima
+   - Animações de entrada da esquerda para a direita
+   - Animações de entrada da direita para a esquerda
+   - Animações de escala
+   - Animações de rotação
 
-To learn more about Next.js, take a look at the following resources:
+2. **gsap.to()** - Utilizado no componente `GsapAnimations.tsx` e na página principal para animar elementos para um estado final:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Animação dos elementos decorativos no hero (rotação contínua)
+   - Animação dos cards de depoimentos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **gsap.from()** - Utilizado no componente `GsapAnimations.tsx` e na página principal para animar elementos a partir de um estado inicial:
 
-## Deploy on Vercel
+   - Animação dos passos na seção "Como funciona"
+   - Animação do footer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **gsap.timeline()** - Utilizado nos componentes `TimelineAnimation.tsx` e na página principal para criar sequências de animações:
+   - Timeline para animar os cards de recursos
+   - Timeline para animar a seção CTA
+   - Timeline para animar a seção de chat
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ScrollTrigger
+
+Foram implementados triggers de rolagem em diferentes seções da página:
+
+1. **Seção de Recursos** - Animação sequencial dos cards de recursos quando o usuário rola até esta seção
+2. **Seção Como Funciona** - Animação dos passos quando o usuário rola até esta seção
+3. **Seção de Depoimentos** - Animação dos cards de depoimentos quando o usuário rola até esta seção
+4. **Seção CTA** - Animação com timeline da seção CTA quando o usuário rola até esta seção
+5. **Seção de Chat** - Animação com timeline dos elementos de chat quando o usuário rola até esta seção
+
+## Componentes de Animação
+
+1. **AnimatedComponent** - Componente reutilizável para animações básicas com diferentes estilos
+2. **GsapAnimations** - Componente para demonstrar o uso de gsap.to() e gsap.from() com e sem ScrollTrigger
+3. **TimelineAnimation** - Componente para criar animações sequenciais com timeline e ScrollTrigger
+
+## Como Executar
+
+1. Clone o repositório
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Execute o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+4. Acesse http://localhost:3000 no seu navegador
+
+## Observações
+
+- Todas as animações são otimizadas para dispositivos móveis e desktop
+- As animações são acionadas com base na rolagem da página
+- O erro de hidratação foi corrigido adicionando o atributo `suppressHydrationWarning` e `cz-shortcut-listen="true"` ao elemento body no layout.tsx
