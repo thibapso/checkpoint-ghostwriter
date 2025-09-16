@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     );
 
     // Retorna o stream como uma resposta com os headers corretos para download
-    return new Response(stream as any, {
+    return new Response(stream as ReadableStream, {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="autobiografia_${authorName.replace(/\s/g, '_')}.pdf"`,

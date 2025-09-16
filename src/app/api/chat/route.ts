@@ -1,16 +1,10 @@
 // src/app/api/chat/route.ts
 import { NextResponse } from 'next/server';
 import { interviewQuestions } from '@/lib/questions';
-import OpenAI from 'openai';
-
-// Inicializa o cliente da OpenAI com a chave diretamente
-const openai = new OpenAI({
-  apiKey: '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',
-});
 
 export async function POST(req: Request) {
   try {
-    const { userResponse, currentQuestionIndex } = await req.json();
+    const { currentQuestionIndex } = await req.json();
 
     // Lógica para determinar a próxima pergunta ou finalizar
     const nextQuestionIndex = currentQuestionIndex + 1;

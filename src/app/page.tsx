@@ -330,8 +330,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Finalmente consegui documentar minha história para meus netos.
-                O processo foi tão fácil e o resultado ficou incrível!"
+                &ldquo;Finalmente consegui documentar minha história para meus netos.
+                O processo foi tão fácil e o resultado ficou incrível!&rdquo;
               </p>
             </GsapAnimations>
 
@@ -350,8 +350,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-600">
-                "A IA capturou perfeitamente a essência da minha jornada
-                empresarial. Recomendo para todos!"
+                &ldquo;A IA capturou perfeitamente a essência da minha jornada
+                empresarial. Recomendo para todos!&rdquo;
               </p>
             </GsapAnimations>
 
@@ -370,8 +370,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Processo simples e resultado profissional. Minha família adorou
-                ler sobre minha vida!"
+                &ldquo;Processo simples e resultado profissional. Minha família adorou
+                ler sobre minha vida!&rdquo;
               </p>
             </GsapAnimations>
           </div>

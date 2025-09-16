@@ -6,7 +6,6 @@ import {
   Document,
   StyleSheet,
   Font,
-  Image,
 } from '@react-pdf/renderer';
 
 // Interface para definir a estrutura dos dados da entrevista

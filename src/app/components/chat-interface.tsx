@@ -55,7 +55,7 @@ export function ChatInterface() {
       } else {
         setCurrentQuestionIndex((prev) => prev + 1);
       }
-    } catch (error) {
+    } catch {
       const errorMessage = { text: "Desculpe, ocorreu um erro de conexão. Por favor, tente enviar sua resposta novamente.", sender: 'ai' as const };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
