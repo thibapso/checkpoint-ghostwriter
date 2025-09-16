@@ -3,12 +3,12 @@ import { NextResponse } from 'next/server';
 import { interviewQuestions } from '@/lib/questions';
 import OpenAI from 'openai';
 
-// Inicializa o cliente da OpenAI com a chave do arquivo .env.local
+// Inicializa o cliente da OpenAI com a chave diretamente
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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',
 });
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const { userResponse, currentQuestionIndex } = await req.json();
 
@@ -31,6 +31,6 @@ export async function POST(req) {
 
   } catch (error) {
     console.error('[CHAT_API_ERROR]', error);
-    return new NextResponse('Internal Server Error', { status: 500 });
+    return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
   }
 }
