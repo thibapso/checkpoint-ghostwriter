@@ -1,7 +1,7 @@
 // src/app/api/generate-pdf/route.ts
 import { NextResponse } from 'next/server';
 import { renderToStream } from '@react-pdf/renderer';
-import { AutobiographyDocument } from '../../components/AutobiographyDocument';
+import { SimplePDFDocument } from '../../components/SimplePDFDocument';
 
 export async function POST(req: Request) {
   try {
@@ -38,9 +38,11 @@ export async function POST(req: Request) {
     const docData = { authorName, title, chapters };
 
     console.log('Starting PDF render...');
+    console.log('Document data:', JSON.stringify(docData, null, 2));
+    
     // Renderiza o documento PDF para um stream
     const stream = await renderToStream(
-      <AutobiographyDocument data={docData} />
+      <SimplePDFDocument data={docData} />
     );
 
     console.log('PDF render completed, returning response');

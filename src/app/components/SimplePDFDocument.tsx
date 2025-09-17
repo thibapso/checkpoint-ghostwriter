@@ -1,11 +1,10 @@
-// src/components/AutobiographyDocument.tsx
+// src/components/SimplePDFDocument.tsx
 import {
   Page,
   Text,
   View,
   Document,
   StyleSheet,
-  Font,
 } from '@react-pdf/renderer';
 
 // Interface para definir a estrutura dos dados da entrevista
@@ -18,35 +17,14 @@ interface InterviewData {
   }[];
 }
 
-// Registra a fonte da máquina de escrever
-// Para Vercel, usamos a URL absoluta do domínio de produção
-try {
-  Font.register({
-    family: 'Special Elite',
-    src: 'https://checkpoint-ghostwriter-so16.vercel.app/fonts/SpecialElite-Regular.ttf',
-  });
-} catch (error) {
-  console.log('Erro ao carregar fonte local, usando fallback');
-}
-
-// Fallback para caso a fonte não carregue
-try {
-  Font.register({
-    family: 'Special Elite',
-    src: 'https://fonts.gstatic.com/s/specialelite/v18/XLYgIZbP4Yp_4nxmi2VnF42dF7I0BYlK.ttf',
-  });
-} catch (error) {
-  console.log('Erro ao carregar fonte do Google Fonts, usando fonte padrão');
-}
-
-// Define os estilos do documento, similar ao CSS-in-JS
+// Define os estilos do documento usando apenas fontes padrão
 const styles = StyleSheet.create({
   page: {
     paddingTop: 35,
     paddingBottom: 65,
     paddingHorizontal: 45,
-    backgroundColor: '#f8f4e8', // Um tom de papel antigo
-    fontFamily: 'Special Elite, Courier, monospace', // Fallback para fontes padrão
+    backgroundColor: '#f8f4e8',
+    fontFamily: 'Helvetica',
   },
   coverPage: {
     justifyContent: 'center',
@@ -88,7 +66,7 @@ const styles = StyleSheet.create({
 });
 
 // O componente que define a estrutura do PDF
-export const AutobiographyDocument = ({ data }: { data: InterviewData }) => (
+export const SimplePDFDocument = ({ data }: { data: InterviewData }) => (
   <Document
     author={data.authorName}
     title={data.title}
