@@ -113,7 +113,8 @@ export function ChatInterface() {
       console.log('PDF baixado com sucesso!');
     } catch (error) {
       console.error('Erro ao gerar o PDF:', error);
-      alert(`Erro ao gerar PDF: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+      alert(`Erro ao gerar PDF: ${errorMessage}`);
     } finally {
       setIsGeneratingPdf(false);
     }
