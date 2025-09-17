@@ -32,8 +32,8 @@ export default function AnimatedComponent({
       if (element) {
         // Exemplo de uso do gsap.fromTo()
         // Comentário: Aqui estamos usando gsap.fromTo() para animar o elemento de um estado inicial para um estado final
-        let fromVars = {};
-        let toVars = {
+        let fromVars: gsap.TweenVars = {};
+        let toVars: gsap.TweenVars = {
           opacity: 1,
           duration: 1.2,
           ease: "power3.out",
