@@ -19,12 +19,16 @@ interface InterviewData {
 }
 
 // Registra a fonte da máquina de escrever
-// Atenção: O caminho pode precisar de ajuste dependendo de onde você executa a API.
-// Para Vercel, é comum usar `path.resolve` para garantir o caminho absoluto.
-// Para desenvolvimento local, o caminho relativo pode funcionar.
+// Para Vercel, usamos a URL absoluta do domínio de produção
 Font.register({
   family: 'Special Elite',
-  src: 'http://localhost:3000/fonts/SpecialElite-Regular.ttf', // Usamos a URL absoluta
+  src: 'https://checkpoint-ghostwriter-so16.vercel.app/fonts/SpecialElite-Regular.ttf',
+});
+
+// Fallback para caso a fonte não carregue
+Font.register({
+  family: 'Special Elite',
+  src: 'https://fonts.gstatic.com/s/specialelite/v18/XLYgIZbP4Yp_4nxmi2VnF42dF7I0BYlK.ttf',
 });
 
 // Define os estilos do documento, similar ao CSS-in-JS

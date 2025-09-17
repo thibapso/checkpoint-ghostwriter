@@ -66,17 +66,31 @@ export function ChatInterface() {
   const handleGeneratePdf = async () => {
     setIsGeneratingPdf(true);
     try {
+      console.log('Iniciando geração de PDF...');
+      console.log('Mensagens para enviar:', messages);
+      
       const response = await fetch('/api/generate-pdf', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages }),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
       if (!response.ok) {
-        throw new Error('A resposta do servidor não foi OK');
+        const errorData = await response.json();
+        console.error('Erro do servidor:', errorData);
+        throw new Error(`Erro do servidor: ${errorData.message || 'Resposta não foi OK'}`);
       }
 
       const blob = await response.blob();
+      console.log('Blob criado, tamanho:', blob.size);
+      
+      if (blob.size === 0) {
+        throw new Error('O PDF gerado está vazio');
+      }
+
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -95,8 +109,11 @@ export function ChatInterface() {
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
+      
+      console.log('PDF baixado com sucesso!');
     } catch (error) {
       console.error('Erro ao gerar o PDF:', error);
+      alert(`Erro ao gerar PDF: ${error.message}`);
     } finally {
       setIsGeneratingPdf(false);
     }
